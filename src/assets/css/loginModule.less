@@ -1,0 +1,83 @@
+@import './normalize.less';
+.back {
+  width: 100%;
+  height: 100%;
+  background: url('../img/back.png') no-repeat;
+  background-size: cover;
+  .form {
+    width: 400px;
+    margin: 0 auto;
+    border: 0;
+    border-radius: 8px;
+    box-shadow: 1px 1px 20px #c4c4c4;
+    position: relative;
+    top: calc(50% - 200px);
+    /* top start */
+    .top {
+      width: 100%;
+      height: 52px;
+      padding-top: 15px;
+      border-radius: 6px 6px 0 0;
+      background-color: @primaryColor;
+      font-size: 18px;
+      color: white;
+      .text {
+        text-align: center;
+        margin-top: 5px;
+      }
+    }
+    .bottom{
+      .ul_1 {
+        width: 250px;
+        margin: 40px auto 0;
+        border-radius: 6px;
+        border: 1px solid @primaryColor;
+        li {
+          width: 100%;
+          height: 35px;
+          float: left;
+          display: flex;
+          align-items: center;
+          input {
+            height: 100%;
+            background-color: transparent;
+            float: left;
+            border: none;
+          }
+        }
+      }
+      .input {
+        width: 100%;
+        border-radius: 5px;
+        padding-left: 10%;
+        color: #585858;
+        letter-spacing: 1px;
+      }
+      .ul_2 {
+        width: 250px;
+        margin: 14px auto 0;
+        font-size: 12px;
+        .li_3 a:hover {
+          color: #3072bd;
+        }
+      }
+      .login{
+        .button {
+          width: 250px;
+          height: 35px;
+          background-color: @primaryColor;
+          border: none;
+          font-size: 14px;
+          display: block;
+          color: white;
+          border-radius: 6px;
+          margin: 14px auto 0;
+          letter-spacing: 5px;
+          .b_login:active {
+            background: #3072bd;
+          }
+        }
+      }
+    }
+  }
+}
