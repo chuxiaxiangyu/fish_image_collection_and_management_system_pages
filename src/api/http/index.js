@@ -1,7 +1,7 @@
 import Axios from 'axios';
 
 // Axios.defaults.baseURL = 'http://192.168.1.101:3000/';
-Axios.defaults.baseURL = 'http://192.168.1.76:3000';
+Axios.defaults.baseURL = 'http://192.168.169.115:3000';
 let baseHttp = {
   get: (url, params = {}) => {
     return Axios.get(url, {

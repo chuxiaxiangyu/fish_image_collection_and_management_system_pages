@@ -5,7 +5,8 @@ const LoginModule = resolve => require(['@/components/user/login/LoginModule'], 
 const Login = resolve => require(['@/components/user/login/Login'], resolve);
 const Register = resolve => require(['@/components/user/login/Register'], resolve);
 const Find = resolve => require(['@/components/user/login/Find'], resolve);
-const IndexPage = resolve => require(['@/components/index/IndexPage'], resolve);
+const Index = resolve => require(['@/components/index/Index'], resolve);
+const FishImg = resolve => require(['@/components/fish/FishImgs'],resolve);
 
 
 Vue.use(Router);
@@ -20,6 +21,10 @@ export default new Router({
         {path: '/find', name: 'Find', component: Find}
       ]
     },
-    {path: '/index', name: 'IndexPage', component: IndexPage}
+    {
+      path: '/index', name: 'Index', component: Index, children:[
+        {path:'/index', name: 'FishImg', component: FishImg}
+      ]
+    }
   ]
 })
