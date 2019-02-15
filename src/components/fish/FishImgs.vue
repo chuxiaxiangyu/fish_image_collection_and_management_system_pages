@@ -1,19 +1,26 @@
 <template>
   <div>
-    <img v-for="(item,index) in imgs" :src="item.url" alt="">
+    <ul class="img_ul">
+      <img-and-text v-for="(item,index) in imgs" :item="item" :key="index"></img-and-text>
+    </ul>
   </div>
 </template>
 
 <script>
   import {getFishImg} from "../../api/fish/getFishImg";
+  import ImgAndText from './ImgAndText'
 
   export default {
     name: "FishImgs",
+    components: {
+      ImgAndText
+    },
     data() {
       return {
-        imgs: []
+        imgs: [],
       }
     },
+    methods: {},
     async mounted() {
       let result = await getFishImg();
       if (result.status === 200) {
@@ -26,8 +33,7 @@
 </script>
 
 <style scoped lang="less">
-  img{
-    height: 200px;
-    margin: 10px 0 0 10px;
+  .img_ul {
+    padding: 10px;
   }
 </style>

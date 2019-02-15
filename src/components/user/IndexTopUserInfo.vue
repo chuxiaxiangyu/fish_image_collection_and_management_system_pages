@@ -1,12 +1,12 @@
 <template>
   <div class="user_info">
     你好，{{name}}
-    <el-dropdown class="dropdown" @command="commandHandler">
+    <el-dropdown class="dropdown" @command="commandHandler" show-timeout="100">
       <span class="el-dropdown-link">
         <i class="el-icon-arrow-down el-icon--right"></i>
       </span>
       <el-dropdown-menu slot="dropdown">
-        <el-dropdown-item command="cancellationAccountHandler">注销账号</el-dropdown-item>
+        <el-dropdown-item command="cancellationAccountHandler">退出账号</el-dropdown-item>
       </el-dropdown-menu>
     </el-dropdown>
   </div>
@@ -20,18 +20,22 @@
         name: window.localStorage['username']
       }
     },
-    methods:{
+    methods: {
       /**
        * 注销账号
        */
-      commandHandler(command){
-        switch(command){
+      commandHandler(command) {
+        switch (command) {
           case 'cancellationAccountHandler' :
-            this.$message.success('退出账号成功。');
-            setTimeout(_ => {
-              this.$router.push('/login');
-              window.localStorage.clear();
-            },1500);
+            this.$confirm('确认退出账号？')
+              .then(_ => {
+                this.$message.success('退出账号成功。');
+                setTimeout(_ => {
+                  this.$router.push('/login');
+                  window.localStorage.clear();
+                }, 1500);
+              })
+              .catch(_ => {});
         }
       }
     }
@@ -47,6 +51,7 @@
     font-size: 14px;
     text-align: right;
     margin-right: 20px;
+
     .dropdown {
       color: #c4c4c4;
     }

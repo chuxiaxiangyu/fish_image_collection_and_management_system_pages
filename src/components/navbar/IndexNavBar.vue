@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="index_nav_bar">
     <el-menu
       :default-active="activeIndex"
       class="el-menu-demo"
@@ -10,7 +10,7 @@
 
       active-text-color="#ffd04b">
       <el-menu-item index="1">首页</el-menu-item>
-      <el-submenu index="2">
+      <el-submenu index="2" show-timeout="100" hide-timeout="100">
         <template slot="title">我的工作台</template>
         <el-menu-item index="2-1">选项1</el-menu-item>
         <el-menu-item index="2-2">选项2</el-menu-item>
@@ -45,5 +45,8 @@
 <style scoped>
   .el-menu.el-menu--horizontal{
     border-bottom: none;
+  }
+  .index_nav_bar{
+    position: relative;
   }
 </style>

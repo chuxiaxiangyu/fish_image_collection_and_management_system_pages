@@ -36,6 +36,7 @@
 <style lang="less" scoped>
 
   .index_top {
+    z-index: 999;
     background-color: rgb(84, 92, 100);
     .title {
       line-height: 60px;

@@ -1,7 +1,6 @@
 <template>
   <div class="component_content index">
     <index-top class="index_top"></index-top>
-    <!--<fish-imgs></fish-imgs>-->
     <div class="index_main">
       <router-view/>
     </div>
