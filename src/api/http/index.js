@@ -1,11 +1,13 @@
 import Axios from 'axios';
 
-// Axios.defaults.baseURL = 'http://192.168.1.101:3000/';
-Axios.defaults.baseURL = 'http://192.168.169.115:3000';
+Axios.defaults.baseURL = 'http://172.0.0.1:3000';
+
 let baseHttp = {
   get: (url, params = {}) => {
     return Axios.get(url, {
-      ...params
+      params: {
+        ...params
+      }
     })
 
   },
@@ -21,7 +23,7 @@ Axios.interceptors.request.use(config => {
   return Promise.resolve(config);
 });
 
-//相应拦截器
+//响应拦截器
 Axios.interceptors.response.use(res => {
   return Promise.resolve(res.data);
 });

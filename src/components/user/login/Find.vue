@@ -36,7 +36,12 @@
     methods:{
       async find(){
         if(!this.form.username){
-          this.$message.error('请输入用户名');
+          this.$notify.error({
+            title: '错误',
+            message: '请输入用户名',
+            offset: 70,
+            duration: 2500
+          });
           return
         }
         let result = await find({
@@ -48,6 +53,13 @@
             callback:()=>{
               this.$router.push('/login');
             }
+          });
+        }else{
+          this.$notify.error({
+            title: '错误',
+            message: result.message,
+            offset: 70,
+            duration: 2500
           });
         }
       }

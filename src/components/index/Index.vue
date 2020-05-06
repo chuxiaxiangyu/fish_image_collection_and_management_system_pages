@@ -8,28 +8,30 @@
 </template>
 
 <script>
-  import IndexTop from './IndexTop'
-  import FishImgs from '../fish/FishImgs'
+  import IndexTop from './index-top'
 
   export default {
     name: "Index",
     components:{
-      IndexTop,
-      FishImgs
+      IndexTop
     },
     data(){
-      return{}
+      return {}
     }
   }
 </script>
 
 <style lang="less" scoped>
   .index_top{
-    position: fixed;
     width: 100%;
     top: 0;
+    height: 60px;
+    position: fixed;
   }
   .index_main{
     padding: 60px 0 30px 0;
+  }
+  .el-header,.el-main{
+    padding: 0;
   }
 </style>

@@ -4,10 +4,11 @@
     @mouseenter="mouseEnterHandler($event)"
     @mouseleave="mouseLeaveHandler($event)">
     <img
-      :src="item.url"
+      v-lazy="item.url"
       :alt="item.msg"
-      :preview="0"
+      :preview="1"
       :preview-text="item.msg"
+      class="img"
     >
     <div class="text_div">
       <transition :name="animation">
@@ -19,18 +20,19 @@
 
 <script>
   import {getEnterOrLeaveDirection} from "../../../util/animate";
+
   export default {
     name: "ImgAndText",
-    props:['item'],
-    data(){
-      return{
-        animation:'',
-        ifShow:false
+    props: ['item'],
+    data() {
+      return {
+        animation: '',
+        ifShow: false
       }
     },
-    methods:{
+    methods: {
       /**
-       * 移入时间处理函数
+       * 移入处理函数
        * @param e
        * @returns {Promise<void>}
        */
@@ -43,70 +45,78 @@
        * @param e
        * @returns {Promise<void>}
        */
-      async mouseLeaveHandler(e){
+      async mouseLeaveHandler(e) {
         this.animation = await getEnterOrLeaveDirection(e);
-        setTimeout(_=>{
+        setTimeout(_ => {
           this.ifShow = false;
         });
       }
+    },
+    mounted(){
     }
   }
 </script>
 
 <style scoped lang="less">
   @import "../../assets/css/main.css";
-  .img_li{
-    position: relative;
-    float: left;
-    margin: 0 0 10px 0;
+
+  .img_li {
+    flex-grow: 1;
+    width: 25%;
+    margin: 5px 0;
     overflow: hidden;
+    position: relative;
+    .img {
+      min-width: 100%;
+      object-fit: cover;
+    }
   }
-  img {
-    height: 200px;
-    max-width: 500px;
-  }
-  .text_div{
+
+  .text_div {
     position: absolute;
     bottom: 0;
     color: #eee;
     overflow: hidden;
     width: 100%;
-    .text_p{
+    .text_p {
       line-height: 30px;
       text-overflow: ellipsis;
       overflow: hidden;
       white-space: nowrap;
-      width: 100%;
       padding-left: 10px;
-      background: rgba(0,0,0,0.5);
+      background: rgba(0, 0, 0, 0.5);
     }
   }
 
-  .top-enter-active, .top-leave-active{
+  .top-enter-active, .top-leave-active {
     transition: all .5s ease-in-out;
   }
-  .top-enter,.top-leave-to{
+
+  .top-enter, .top-leave-to {
     transform: translateY(-30px);
   }
 
-  .bottom-enter-active,.bottom-leave-active{
+  .bottom-enter-active, .bottom-leave-active {
     transition: all .5s ease-in-out;
   }
-  .bottom-enter,.bottom-leave-to{
+
+  .bottom-enter, .bottom-leave-to {
     transform: translateY(30px);
   }
 
-  .left-enter-active,.left-leave-active{
+  .left-enter-active, .left-leave-active {
     transition: all .5s ease-in-out;
   }
-  .left-enter,.left-leave-to{
+
+  .left-enter, .left-leave-to {
     transform: translateX(-100%);
   }
 
-  .right-enter-active,.right-leave-active{
+  .right-enter-active, .right-leave-active {
     transition: all .5s ease-in-out;
   }
-  .right-enter,.right-leave-to{
+
+  .right-enter, .right-leave-to {
     transform: translateX(100%);
   }
 </style>

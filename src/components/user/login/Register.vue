@@ -46,11 +46,21 @@
        */
       async register() {
         if (this.form.password !== this.form.againPassword) {
-          this.$message.error('两次密码不一致');
+          this.$notify.error({
+            title: '错误',
+            message: '两次密码不一致',
+            offset: 70,
+            duration: 2500
+          });
           return
         }
         if (!this.form.password || !this.form.username ) {
-          this.$message.error('请输入用户名或密码');
+          this.$notify.error({
+            title: '错误',
+            message: '请输入用户名或密码',
+            offset: 70,
+            duration: 2500
+          });
           return
         }
         let result = await register({
@@ -58,13 +68,23 @@
           password:this.form.password+''
         });
         if(result.status === 200){
-          this.$message.success("注册成功");
+          this.$notify.success({
+            title: "成功",
+            message: "注册成功",
+            offset: 70,
+            duration: 2500
+          });
           window.localStorage.clear();
           setTimeout(_=>{
             this.$router.push('/login');
           },2000)
         }else{
-          this.$message.error(result.message)
+          this.$notify.error({
+            title: '错误',
+            message: result.message,
+            offset: 70,
+            duration: 2500
+          });
         }
       },
     },
